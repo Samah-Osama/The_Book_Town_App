@@ -16,7 +16,7 @@ class CustomeAppBar extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
-              size: 35,
+              size: 30,
             ),
           )
         ],
