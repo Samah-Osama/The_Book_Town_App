@@ -1,8 +1,8 @@
 import 'package:booly_app/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
 
-class BooksListViewIem extends StatelessWidget {
-  const BooksListViewIem({super.key});
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage({super.key});
   @override
   Widget build(BuildContext context) {
     return AspectRatio(

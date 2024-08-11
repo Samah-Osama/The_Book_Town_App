@@ -11,12 +11,10 @@ class BookDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
-        preferredSize:  Size.fromHeight(100),
+        preferredSize: Size.fromHeight(105),
         child: CustomBookDetailsAppBar(),
       ),
-      body:  BookDetailsViewBody(),
+      body: BookDetailsViewBody(),
     );
   }
 }
-
-
