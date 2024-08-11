@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
   @override
+  static String id = 'home_view';
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
