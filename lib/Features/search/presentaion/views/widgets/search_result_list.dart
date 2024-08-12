@@ -1,4 +1,4 @@
-import 'package:booly_app/Features/home/presentaion/view/widgets/best_seller_list_view_item.dart';
+import 'package:booly_app/Features/home/presentaion/view/widgets/book_list_item.dart';
 import 'package:booly_app/core/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class SearchResultList extends StatelessWidget {
         const SizedBox(height: 12),
         Expanded(
           child: ListView.builder(itemBuilder: (context, index) {
-            return const BestSellerListViewItem();
+            return const BookListItem();
           }),
         ),
       ],

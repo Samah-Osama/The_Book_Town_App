@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
-  // TODO: implement searchFieldDecorationTheme
   ThemeData appBarTheme(context) {
     final ThemeData theme = Theme.of(context);
     return theme.copyWith(
-        inputDecorationTheme: const InputDecorationTheme(fillColor: kPrimaryColor));
+        inputDecorationTheme:
+            const InputDecorationTheme(fillColor: kPrimaryColor));
   }
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -47,5 +48,3 @@ class CustomSearchDelegate extends SearchDelegate {
     );
   }
 }
-
-

@@ -19,7 +19,6 @@ class TheBookTown extends StatelessWidget {
       routes: {
         HomeView.id: (context) => const HomeView(),
         BookDetailsView.id: (context) => const BookDetailsView(),
-        
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(

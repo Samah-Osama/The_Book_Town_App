@@ -4,8 +4,8 @@ import 'package:booly_app/core/styles.dart';
 import 'package:booly_app/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+class BookListItem extends StatelessWidget {
+  const BookListItem({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(
