@@ -1,3 +1,4 @@
+import 'package:booly_app/Features/search/presentaion/views/search_view.dart';
 import 'package:booly_app/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,7 +14,9 @@ class CustomeAppBar extends StatelessWidget {
         children: [
           Image.asset(AssetsData.kSmallLogo, height: 50),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context, delegate: CustomSearchDelegate());
+            },
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 30,
@@ -24,3 +27,4 @@ class CustomeAppBar extends StatelessWidget {
     );
   }
 }
+
