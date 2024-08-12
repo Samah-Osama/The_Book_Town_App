@@ -11,7 +11,7 @@ class BookDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(105),
+        preferredSize: Size.fromHeight(90),
         child: CustomBookDetailsAppBar(),
       ),
       body: BookDetailsViewBody(),

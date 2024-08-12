@@ -8,7 +8,7 @@ class CustomBookDetailsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: AppBar(
         leading: IconButton(
             onPressed: () {},
