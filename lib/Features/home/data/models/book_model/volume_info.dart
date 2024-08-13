@@ -9,7 +9,6 @@ class VolumeInfo extends Equatable {
   final String? title;
   final List<String>? authors;
   final String? publisher;
-  final String? publishedDate;
   final String? description;
   final List<IndustryIdentifier>? industryIdentifiers;
   final ReadingModes? readingModes;
@@ -30,7 +29,6 @@ class VolumeInfo extends Equatable {
     this.title,
     this.authors,
     this.publisher,
-    this.publishedDate,
     this.description,
     this.industryIdentifiers,
     this.readingModes,
@@ -52,7 +50,6 @@ class VolumeInfo extends Equatable {
         title: json['title'] as String?,
         authors: json['authors'] as List<String>?,
         publisher: json['publisher'] as String?,
-        publishedDate: json['publishedDate'] as String?,
         description: json['description'] as String?,
         industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
             ?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
@@ -84,7 +81,6 @@ class VolumeInfo extends Equatable {
         'title': title,
         'authors': authors,
         'publisher': publisher,
-        'publishedDate': publishedDate,
         'description': description,
         'industryIdentifiers':
             industryIdentifiers?.map((e) => e.toJson()).toList(),
@@ -109,7 +105,6 @@ class VolumeInfo extends Equatable {
       title,
       authors,
       publisher,
-      publishedDate,
       description,
       industryIdentifiers,
       readingModes,
