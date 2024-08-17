@@ -1,13 +1,17 @@
+import 'package:booly_app/Features/home/data/repos/home_repo_impl.dart';
 import 'package:booly_app/Features/home/presentaion/view/book_details_view.dart';
 import 'package:booly_app/Features/home/presentaion/view/home_view.dart';
 import 'package:booly_app/Features/spalsh_feature/presentaion/views/splash_view.dart';
 import 'package:booly_app/constant.dart';
+import 'package:booly_app/core/utils/api_service.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const TheBookTown());
-  
+  HomeRepoImplementation(apiService: ApiService(dio: Dio()))
+      .fetchGeneralBooks();
 }
 
 class TheBookTown extends StatelessWidget {
