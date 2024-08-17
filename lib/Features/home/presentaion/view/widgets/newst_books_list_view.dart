@@ -1,8 +1,8 @@
 import 'package:booly_app/Features/home/presentaion/view/widgets/book_list_item.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerListView extends StatelessWidget {
-  const BestSellerListView({super.key});
+class NewstBooksListView extends StatelessWidget {
+  const NewstBooksListView({super.key});
   @override
   Widget build(BuildContext context) {
     return SliverList(

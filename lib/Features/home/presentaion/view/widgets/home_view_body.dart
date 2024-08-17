@@ -1,4 +1,4 @@
-import 'package:booly_app/Features/home/presentaion/view/widgets/best_seller_list_view.dart';
+import 'package:booly_app/Features/home/presentaion/view/widgets/newst_books_list_view.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/books_list_view.dart';
 import 'package:booly_app/core/styles.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,14 +20,14 @@ class HomeViewBody extends StatelessWidget {
                 BooksListView(),
                 SizedBox(height: 50),
                 Text(
-                  'Best Seller',
+                  'Newst Books',
                   style: Styles.textStyle18,
                 ),
                 SizedBox(height: 20),
               ],
             ),
           ),
-          BestSellerListView()
+          NewstBooksListView()
         ],
       ),
     );
