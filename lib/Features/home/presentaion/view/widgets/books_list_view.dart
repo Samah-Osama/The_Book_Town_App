@@ -1,6 +1,7 @@
 import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_image.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
 import 'package:booly_app/core/widgets/custom_error_widget.dart';
+import 'package:booly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class BooksListView extends StatelessWidget {
         } else if (state is GeneralbooksFailure) {
           return CustomErrorWidget(errorMessege: state.errorMessege);
         } else {
-          return const Center(child: CircularProgressIndicator(),);
+          return const CustomLoadingIndicator();
         }
       },
     );
