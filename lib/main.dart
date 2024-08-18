@@ -1,17 +1,20 @@
 import 'package:booly_app/Features/home/data/repos/home_repo_impl.dart';
 import 'package:booly_app/Features/home/presentaion/view/book_details_view.dart';
 import 'package:booly_app/Features/home/presentaion/view/home_view.dart';
+import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
+import 'package:booly_app/Features/home/presentaion/view_models/newest_book_cubit/newestbook_cubit.dart';
 import 'package:booly_app/Features/spalsh_feature/presentaion/views/splash_view.dart';
 import 'package:booly_app/constant.dart';
-import 'package:booly_app/core/utils/api_service.dart';
-import 'package:dio/dio.dart';
+
+import 'package:booly_app/core/utils/service_locator.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  setupServeiceLocator();
   runApp(const TheBookTown());
-  HomeRepoImplementation(apiService: ApiService(dio: Dio()))
-      .fetchGeneralBooks();
 }
 
 class TheBookTown extends StatelessWidget {
@@ -19,18 +22,32 @@ class TheBookTown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        HomeView.id: (context) => const HomeView(),
-        BookDetailsView.id: (context) => const BookDetailsView(),
-      },
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-          appBarTheme: const AppBarTheme(color: kPrimaryColor),
-          scaffoldBackgroundColor: kPrimaryColor,
-          textTheme:
-              GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)),
-      home: const SplashView(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GeneralbooksCubit(
+            getIt.get<HomeRepoImplementation>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => NewestbookCubit(
+            getIt.get<HomeRepoImplementation>(),
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        routes: {
+          HomeView.id: (context) => const HomeView(),
+          BookDetailsView.id: (context) => const BookDetailsView(),
+        },
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark().copyWith(
+            appBarTheme: const AppBarTheme(color: kPrimaryColor),
+            scaffoldBackgroundColor: kPrimaryColor,
+            textTheme:
+                GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)),
+        home: const SplashView(),
+      ),
     );
   }
 }
