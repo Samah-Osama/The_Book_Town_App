@@ -15,7 +15,8 @@ class NewestBookListItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, BookDetailsView.id);
+          Navigator.pushNamed(context, BookDetailsView.id,
+              arguments: bookModel.id);
         },
         child: SizedBox(
           height: 140,
@@ -58,7 +59,7 @@ class NewestBookListItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        DetailsButton()
+                        const DetailsButton()
                       ],
                     )
                   ],
