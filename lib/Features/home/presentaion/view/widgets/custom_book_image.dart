@@ -12,13 +12,15 @@ class CustomBookImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: CachedNetworkImage(
-            fit: BoxFit.fill,
-            imageUrl: imageUrl,
-            placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(),
+          child: GestureDetector(
+            child: CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl: imageUrl,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:booly_app/Features/home/presentaion/view/widgets/book_rate.dart';
+import 'package:booly_app/Features/home/presentaion/view/widgets/details_button.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/books_action_button.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_image.dart';
 import 'package:booly_app/core/styles.dart';
@@ -27,7 +27,7 @@ class BookDetailsSection extends StatelessWidget {
           'Rudyard Kipling',
           style: Styles.textStyle18.copyWith(fontWeight: FontWeight.normal),
         ),
-        const BookRating(mainAxisAlignment: MainAxisAlignment.center),
+        // const BookRating(mainAxisAlignment: MainAxisAlignment.center),
         const SizedBox(height: 10),
         const BooksActionButton(),
       ],
