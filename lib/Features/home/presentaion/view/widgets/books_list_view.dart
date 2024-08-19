@@ -2,7 +2,9 @@ import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_ima
 import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
 import 'package:booly_app/core/widgets/custom_error_widget.dart';
 import 'package:booly_app/core/widgets/custom_loading_indicator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BooksListView extends StatefulWidget {
@@ -19,6 +21,7 @@ class _BooksListViewState extends State<BooksListView> {
     super.initState();
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
@@ -27,9 +30,12 @@ class _BooksListViewState extends State<BooksListView> {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .25,
             child: ListView.builder(
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const CustomBookImage();
+                return CustomBookImage(
+                  imageUrl: state.books[index].volumeInfo!.imageLinks!.thumbnail ?? 'there is error',
+                );
               },
             ),
           );
