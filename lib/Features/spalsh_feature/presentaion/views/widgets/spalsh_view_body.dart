@@ -1,7 +1,9 @@
 import 'package:booly_app/Features/home/presentaion/view/home_view.dart';
+import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
 import 'package:booly_app/Features/spalsh_feature/presentaion/views/widgets/sliding_text.dart';
 import 'package:booly_app/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SpalshViewBody extends StatefulWidget {
   const SpalshViewBody({super.key});
@@ -22,6 +24,7 @@ class _SpalshViewBodyState extends State<SpalshViewBody>
     super.initState();
     initSlidingAnimation();
     navigateToHome();
+    
   }
 
   @override

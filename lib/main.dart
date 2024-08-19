@@ -7,6 +7,7 @@ import 'package:booly_app/Features/spalsh_feature/presentaion/views/splash_view.
 import 'package:booly_app/constant.dart';
 
 import 'package:booly_app/core/utils/service_locator.dart';
+import 'package:booly_app/core/utils/simple_bloc_observer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   setupServeiceLocator();
+  Bloc.observer = SimpleBlocObserver();
   runApp(const TheBookTown());
 }
 
@@ -26,7 +28,7 @@ class TheBookTown extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => GeneralbooksCubit(
-            getIt.get<HomeRepoImplementation>(),
+            getIt.get<HomeRepoImplementation>()..fetchGeneralBooks(),
           ),
         ),
         BlocProvider(

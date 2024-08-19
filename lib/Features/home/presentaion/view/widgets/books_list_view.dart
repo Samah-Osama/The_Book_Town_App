@@ -11,7 +11,11 @@ class BooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
       builder: (context, state) {
-        if (state is GeneralbooksSuccess) {
+        if (state is GeneralbooksLoading) {
+          return const CustomLoadingIndicator();
+        } else if (state is GeneralbooksFailure) {
+          return CustomErrorWidget(errorMessege: state.errorMessege);
+        } else {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .25,
             child: ListView.builder(
@@ -21,12 +25,28 @@ class BooksListView extends StatelessWidget {
               },
             ),
           );
-        } else if (state is GeneralbooksFailure) {
-          return CustomErrorWidget(errorMessege: state.errorMessege);
-        } else {
-          return const CustomLoadingIndicator();
         }
       },
     );
+
+    // BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
+    //   builder: (context, state) {
+    //     if (state is GeneralbooksSuccess) {
+    //       return SizedBox(
+    //         height: MediaQuery.of(context).size.height * .25,
+    //         child: ListView.builder(
+    //           scrollDirection: Axis.horizontal,
+    //           itemBuilder: (context, index) {
+    //             return const CustomBookImage();
+    //           },
+    //         ),
+    //       );
+    //     } else if (state is GeneralbooksFailure) {
+    //       return CustomErrorWidget(errorMessege: state.errorMessege);
+    //     } else {
+    //       return const CustomLoadingIndicator();
+    //     }
+    //   },
+    // );
   }
 }
