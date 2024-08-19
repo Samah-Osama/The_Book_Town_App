@@ -11,13 +11,9 @@ class GeneralbooksCubit extends Cubit<GeneralbooksState> {
     emit(GeneralbooksLoading());
     var result = await homeRepo.fetchGeneralBooks();
     result.fold((failure) {
-      emit(
-        GeneralbooksFailure(errorMessege: failure.errorMessege),
-      );
-    }, (book) {
-      emit(
-        GeneralbooksSuccess(books: book),
-      );
+      emit(GeneralbooksFailure(errorMessege: failure.errorMessege),);
+    }, (books) {
+      emit(GeneralbooksSuccess(books: books),);
     });
   }
 }

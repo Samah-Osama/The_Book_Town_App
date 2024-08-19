@@ -5,17 +5,25 @@ import 'package:booly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BooksListView extends StatelessWidget {
+class BooksListView extends StatefulWidget {
   const BooksListView({super.key});
+
+  @override
+  State<BooksListView> createState() => _BooksListViewState();
+}
+
+class _BooksListViewState extends State<BooksListView> {
+  @override
+  void initState() {
+    BlocProvider.of<GeneralbooksCubit>(context).fetchGeneralBooks();
+    super.initState();
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
       builder: (context, state) {
-        if (state is GeneralbooksLoading) {
-          return const CustomLoadingIndicator();
-        } else if (state is GeneralbooksFailure) {
-          return CustomErrorWidget(errorMessege: state.errorMessege);
-        } else {
+        if (state is GeneralbooksSuccess) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .25,
             child: ListView.builder(
@@ -25,28 +33,30 @@ class BooksListView extends StatelessWidget {
               },
             ),
           );
+        } else if (state is GeneralbooksFailure) {
+          return CustomErrorWidget(errorMessege: state.errorMessege);
         }
+        return const CustomLoadingIndicator();
       },
     );
-
-    // BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
-    //   builder: (context, state) {
-    //     if (state is GeneralbooksSuccess) {
-    //       return SizedBox(
-    //         height: MediaQuery.of(context).size.height * .25,
-    //         child: ListView.builder(
-    //           scrollDirection: Axis.horizontal,
-    //           itemBuilder: (context, index) {
-    //             return const CustomBookImage();
-    //           },
-    //         ),
-    //       );
-    //     } else if (state is GeneralbooksFailure) {
-    //       return CustomErrorWidget(errorMessege: state.errorMessege);
-    //     } else {
-    //       return const CustomLoadingIndicator();
-    //     }
-    //   },
-    // );
   }
 }
+// BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
+//       builder: (context, state) {
+//         if (state is GeneralbooksLoading) {
+//           return CustomLoadingIndicator();
+//         } else if (state is GeneralbooksFailure) {
+//           return CustomErrorWidget(errorMessege: state.errorMessege);
+//         } else {
+//           return SizedBox(
+//             height: MediaQuery.of(context).size.height * .25,
+//             child: ListView.builder(
+//               scrollDirection: Axis.horizontal,
+//               itemBuilder: (context, index) {
+//                 return const CustomBookImage();
+//               },
+//             ),
+//           );
+//         }
+//       },
+//     );

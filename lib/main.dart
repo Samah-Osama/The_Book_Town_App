@@ -28,7 +28,7 @@ class TheBookTown extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => GeneralbooksCubit(
-            getIt.get<HomeRepoImplementation>()..fetchGeneralBooks(),
+            getIt.get<HomeRepoImplementation>(),
           ),
         ),
         BlocProvider(
