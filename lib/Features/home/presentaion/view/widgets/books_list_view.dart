@@ -34,8 +34,9 @@ class _BooksListViewState extends State<BooksListView> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return CustomBookImage(
-                  imageUrl: state.books[index].volumeInfo!.imageLinks!.thumbnail ?? 'there is error',
-                );
+                    imageUrl: (state
+                            .books[index].volumeInfo?.imageLinks?.thumbnail) ??
+                        'https://demofree.sirv.com/nope-not-here.jpg');
               },
             ),
           );
