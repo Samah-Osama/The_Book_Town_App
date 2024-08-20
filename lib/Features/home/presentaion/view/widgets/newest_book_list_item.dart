@@ -16,7 +16,7 @@ class NewestBookListItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, BookDetailsView.id,
-              arguments: bookModel.id);
+              arguments: bookModel);
         },
         child: SizedBox(
           height: 140,
