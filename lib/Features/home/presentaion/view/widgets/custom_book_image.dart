@@ -27,3 +27,4 @@ class CustomBookImage extends StatelessWidget {
     );
   }
 }
+
