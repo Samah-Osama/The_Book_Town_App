@@ -17,23 +17,23 @@ class _BookDetailsViewBodyState extends State<BookDetailsViewBody> {
   @override
   void initState() {
     BlocProvider.of<SimilarBooksCubit>(context).fetchSimilarBooks(
-        category: widget.bookModel.volumeInfo!.categories![0]);
+        category: widget.bookModel.volumeInfo?.categories![0] ?? 'No Category');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return  CustomScrollView(
       slivers: [
         SliverFillRemaining(
           hasScrollBody: false,
           child: Column(
             children: [
-              BookDetailsSection( ),
-              Expanded(
+              BookDetailsSection( bookModel: widget.bookModel),
+            const  Expanded(
                 child: SizedBox(height: 30),
               ),
-              SimilarBooksSection(),
+              SimilarBooksSection(bookModel: widget.bookModel),
             ],
           ),
         )

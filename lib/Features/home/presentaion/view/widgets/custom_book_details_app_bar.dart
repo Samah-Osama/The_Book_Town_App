@@ -11,7 +11,9 @@ class CustomBookDetailsAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: AppBar(
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: const Icon(
               Icons.close,
               size: 35,

@@ -59,7 +59,7 @@ class NewestBookListItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const DetailsButton()
+                         DetailsButton(bookModel: bookModel)
                       ],
                     )
                   ],

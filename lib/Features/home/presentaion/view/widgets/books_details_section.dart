@@ -1,13 +1,15 @@
 import 'package:booly_app/Features/home/data/models/book_model/book_model.dart';
-import 'package:booly_app/Features/home/presentaion/view/widgets/details_button.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/books_action_button.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_image.dart';
 import 'package:booly_app/core/styles.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key, });
-  
+  const BookDetailsSection({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -15,21 +17,30 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .20),
-          child: const CustomBookImage(
-            imageUrl: "http://books.google.com/books/content?id=M7HGEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          child: CustomBookImage(
+            imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ??
+                'https://demofree.sirv.com/nope-not-here.jpg',
           ),
         ),
         const SizedBox(height: 43),
-        const Text(
-          'The Jungle Book',
-          style: Styles.textStyle30,
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Text(
+            softWrap: true,
+            bookModel.volumeInfo?.title ?? ' This Book Without Title',
+            style: Styles.textStyle30.copyWith(fontSize: 24),
+          ),
         ),
-        const SizedBox(height: 6),
-        Text(
-          'Rudyard Kipling',
-          style: Styles.textStyle18.copyWith(fontWeight: FontWeight.normal),
-        ),
-        // const BookRating(mainAxisAlignment: MainAxisAlignment.center),
+        const SizedBox(height: 10),
+        Wrap(
+            direction: Axis.vertical,
+            children:
+                List.generate(bookModel.volumeInfo!.authors!.length, (index) {
+              return Text(
+                bookModel.volumeInfo!.authors![index],
+                style: Styles.textStyle18,
+              );
+            })),
         const SizedBox(height: 10),
         const BooksActionButton(),
       ],

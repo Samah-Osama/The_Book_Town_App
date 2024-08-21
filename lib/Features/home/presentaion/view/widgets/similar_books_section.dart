@@ -4,9 +4,9 @@ import 'package:booly_app/core/styles.dart';
 import 'package:flutter/material.dart';
 
 class SimilarBooksSection extends StatelessWidget {
-  const SimilarBooksSection({super.key, });
+  const SimilarBooksSection({super.key, required this.bookModel, });
   @override
-  // final BookModel bookModel;
+  final BookModel bookModel;
   Widget build(BuildContext context) {
     return Column(
       children: [
