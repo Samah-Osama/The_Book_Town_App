@@ -1,3 +1,4 @@
+import 'package:booly_app/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookDetailsAppBar extends StatelessWidget {
@@ -10,22 +11,16 @@ class CustomBookDetailsAppBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.close,
-              size: 35,
-            )),
+        leading: Image.asset(AssetsData.kSmallLogo, height: 50),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_cart_outlined,
-              size: 35,
-            ),
-          ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.close,
+                size: 35,
+              )),
         ],
       ),
     );

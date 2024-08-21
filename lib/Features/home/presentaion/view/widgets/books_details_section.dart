@@ -40,7 +40,7 @@ class BookDetailsSection extends StatelessWidget {
               );
             })),
         const SizedBox(height: 10),
-        const BooksActionButton(),
+         BooksActionButton(bookModel: bookModel),
       ],
     );
   }
