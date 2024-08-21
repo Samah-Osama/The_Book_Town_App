@@ -2,18 +2,20 @@ import 'package:booly_app/core/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton(
-      {super.key,
-      this.backgroundColor,
-      this.shape,
-      required this.text,
-      this.textcolor,
-      this.onPressed});
+  const CustomButton({
+    super.key,
+    this.backgroundColor,
+    this.shape,
+    required this.text,
+    this.textcolor,
+    this.onPressed,
+  });
   @override
   final Color? backgroundColor;
   final OutlinedBorder? shape;
   final String text;
   final Color? textcolor;
+
   final void Function()? onPressed;
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,8 +27,10 @@ class CustomButton extends StatelessWidget {
           onPressed: () {},
           child: Text(
             text,
-            style: Styles.textStyle18
-                .copyWith(fontWeight: FontWeight.bold, color: textcolor),
+            style: Styles.textStyle20.copyWith(
+              fontWeight: FontWeight.bold,
+              color: textcolor,
+            ),
           )),
     );
   }

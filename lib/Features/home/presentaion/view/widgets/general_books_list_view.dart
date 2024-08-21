@@ -1,3 +1,4 @@
+import 'package:booly_app/Features/home/presentaion/view/book_details_view.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_image.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
 import 'package:booly_app/core/widgets/custom_error_widget.dart';
@@ -7,14 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BooksListView extends StatefulWidget {
-  const BooksListView({super.key});
+class GeneralBooksListView extends StatefulWidget {
+  const GeneralBooksListView({super.key});
 
   @override
-  State<BooksListView> createState() => _BooksListViewState();
+  State<GeneralBooksListView> createState() => _GeneralBooksListViewState();
 }
 
-class _BooksListViewState extends State<BooksListView> {
+class _GeneralBooksListViewState extends State<GeneralBooksListView> {
   @override
   void initState() {
     BlocProvider.of<GeneralbooksCubit>(context).fetchGeneralBooks();
@@ -33,10 +34,16 @@ class _BooksListViewState extends State<BooksListView> {
               itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return CustomBookImage(
-                    imageUrl: (state
-                            .books[index].volumeInfo?.imageLinks?.thumbnail) ??
-                        'https://demofree.sirv.com/nope-not-here.jpg');
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, BookDetailsView.id,
+                        arguments: state.books[index]);
+                  },
+                  child: CustomBookImage(
+                      imageUrl: (state.books[index].volumeInfo?.imageLinks
+                              ?.thumbnail) ??
+                          'https://demofree.sirv.com/nope-not-here.jpg'),
+                );
               },
             ),
           );
@@ -48,22 +55,3 @@ class _BooksListViewState extends State<BooksListView> {
     );
   }
 }
-// BlocBuilder<GeneralbooksCubit, GeneralbooksState>(
-//       builder: (context, state) {
-//         if (state is GeneralbooksLoading) {
-//           return CustomLoadingIndicator();
-//         } else if (state is GeneralbooksFailure) {
-//           return CustomErrorWidget(errorMessege: state.errorMessege);
-//         } else {
-//           return SizedBox(
-//             height: MediaQuery.of(context).size.height * .25,
-//             child: ListView.builder(
-//               scrollDirection: Axis.horizontal,
-//               itemBuilder: (context, index) {
-//                 return const CustomBookImage();
-//               },
-//             ),
-//           );
-//         }
-//       },
-//     );

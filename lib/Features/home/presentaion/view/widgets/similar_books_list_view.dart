@@ -1,3 +1,4 @@
+import 'package:booly_app/Features/home/presentaion/view/book_details_view.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_image.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/similar_books/similar_books_cubit.dart';
 import 'package:booly_app/core/widgets/custom_error_widget.dart';
@@ -20,10 +21,16 @@ class SimilarBooksListView extends StatelessWidget {
                 itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return CustomBookImage(
-                    imageUrl:
-                        state.books[index].volumeInfo?.imageLinks?.thumbnail ??
-                            'https://demofree.sirv.com/nope-not-here.jpg',
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, BookDetailsView.id,
+                          arguments: state.books[index]);
+                    },
+                    child: CustomBookImage(
+                      imageUrl: state
+                              .books[index].volumeInfo?.imageLinks?.thumbnail ??
+                          'https://demofree.sirv.com/nope-not-here.jpg',
+                    ),
                   );
                 },
               ),

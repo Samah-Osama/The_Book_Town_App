@@ -23,21 +23,19 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 43),
-        Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: Text(
-            softWrap: true,
-            bookModel.volumeInfo?.title ?? ' This Book Without Title',
-            style: Styles.textStyle30.copyWith(fontSize: 24),
-          ),
+        Text(
+          textAlign: TextAlign.center,
+          softWrap: true,
+          bookModel.volumeInfo?.title ?? ' This Book Without Title',
+          style: Styles.textStyle30.copyWith(fontSize: 24),
         ),
         const SizedBox(height: 10),
         Wrap(
             direction: Axis.vertical,
-            children:
-                List.generate(bookModel.volumeInfo!.authors!.length, (index) {
+            children: List.generate(bookModel.volumeInfo?.authors?.length ?? 0,
+                (index) {
               return Text(
-                bookModel.volumeInfo!.authors![index],
+                bookModel.volumeInfo!.authors?[index] ?? 'No Author',
                 style: Styles.textStyle18,
               );
             })),

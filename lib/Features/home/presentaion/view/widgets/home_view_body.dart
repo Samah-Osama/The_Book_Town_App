@@ -1,5 +1,5 @@
 import 'package:booly_app/Features/home/presentaion/view/widgets/newst_books_list_view.dart';
-import 'package:booly_app/Features/home/presentaion/view/widgets/books_list_view.dart';
+import 'package:booly_app/Features/home/presentaion/view/widgets/general_books_list_view.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/newest_book_cubit/newestbook_cubit.dart';
 import 'package:booly_app/constant.dart';
@@ -48,7 +48,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BooksListView(),
+                  GeneralBooksListView(),
                   SizedBox(height: 50),
                   Text(
                     'Newst Books',

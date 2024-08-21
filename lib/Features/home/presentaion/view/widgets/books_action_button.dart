@@ -9,7 +9,7 @@ class BooksActionButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomButton(
-          text: '19.99€',
+          text: 'Download',
           textcolor: Colors.black,
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -18,7 +18,7 @@ class BooksActionButton extends StatelessWidget {
           ),
         ),
         CustomButton(
-          text: 'Free preview',
+          text: 'preview',
           backgroundColor: Color(0xffEF8262),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
