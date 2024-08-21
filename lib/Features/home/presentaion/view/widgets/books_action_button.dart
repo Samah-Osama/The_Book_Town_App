@@ -1,4 +1,5 @@
 import 'package:booly_app/Features/home/data/models/book_model/book_model.dart';
+import 'package:booly_app/core/utils/functions/launch_url.dart';
 import 'package:booly_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -12,9 +13,7 @@ class BooksActionButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomButton(
-         onPressed: () {
-           
-         },
+          onPressed: () {},
           text: 'Download',
           textcolor: Colors.black,
           backgroundColor: Colors.white,
@@ -24,14 +23,11 @@ class BooksActionButton extends StatelessWidget {
           ),
         ),
         CustomButton(
-           onPressed: () async {
-            final Uri _url = Uri.parse(bookModel.volumeInfo!.previewLink!);
-            if (await canLaunchUrl(_url)) {
-              !await launchUrl(_url);
-            }
+          onPressed: () async {
+            launchCustomUrl(context, "bookModel.volumeInfo?.previewLink");
           },
-          text: 'preview',
-          backgroundColor: Color(0xffEF8262),
+          text: previewText(bookModel),
+          backgroundColor: const Color(0xffEF8262),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(12),
@@ -40,5 +36,21 @@ class BooksActionButton extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+String previewText(BookModel bookModel) {
+  if (bookModel.volumeInfo?.previewLink == null) {
+    return 'Not available';
+  } else {
+    return 'Preview';
+  }
+}
+
+String downloadText(BookModel bookModel) {
+  if (bookModel.volumeInfo?.previewLink == null) {
+    return 'Not available';
+  } else {
+    return 'Download';
   }
 }
