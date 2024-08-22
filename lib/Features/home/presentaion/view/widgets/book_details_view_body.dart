@@ -1,4 +1,4 @@
-import 'package:booly_app/Features/home/data/models/book_model/book_model.dart';
+import 'package:booly_app/core/models/book_model/book_model.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/books_details_section.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/similar_books_section.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/similar_books/similar_books_cubit.dart';

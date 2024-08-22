@@ -1,4 +1,4 @@
-import 'package:booly_app/Features/home/data/models/book_model/book_model.dart';
+import 'package:booly_app/core/models/book_model/book_model.dart';
 import 'package:booly_app/Features/home/data/repos/home_repo_impl.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/book_details_view_body.dart';
 import 'package:booly_app/Features/home/presentaion/view/widgets/custom_book_details_app_bar.dart';
