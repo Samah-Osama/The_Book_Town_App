@@ -18,13 +18,22 @@ class SearchRepoImple implements SearchRepo {
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
+        if (query != null) {
+          books = books
+              .where((book) => book.volumeInfo!.title!.contains(query))
+              .toList();
+        }
       }
       return right(books);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));
       }
-      return left(ServerFailure(errorMessege: e.toString(),),);
+      return left(
+        ServerFailure(
+          errorMessege: e.toString(),
+        ),
+      );
     }
   }
 }
