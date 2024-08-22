@@ -1,50 +1,39 @@
-import 'package:booly_app/Features/search/presentaion/views/widgets/search_result_list.dart';
-import 'package:booly_app/constant.dart';
+import 'package:booly_app/Features/search/presentaion/view_models/search_cubit/search_cubit.dart';
+import 'package:booly_app/Features/search/presentaion/views/widgets/search_result_list_view.dart';
+import 'package:booly_app/core/styles.dart';
+import 'package:booly_app/core/widgets/custom_error_widget.dart';
+import 'package:booly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomSearchDelegate extends SearchDelegate {
-  @override
-  ThemeData appBarTheme(context) {
-    final ThemeData theme = Theme.of(context);
-    return theme.copyWith(
-        inputDecorationTheme:
-            const InputDecorationTheme(fillColor: kPrimaryColor));
-  }
+class SearchView extends StatelessWidget {
+  const SearchView({
+    super.key,
+  });
 
   @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {
-          query = '';
-        },
-        icon: const Icon(Icons.clear),
-      ),
-    ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-        onPressed: () {
-          close(context, null);
-        },
-        icon: const Icon(Icons.arrow_back));
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 12),
-      child: SearchResultList(),
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 12),
-      child: SearchResultList(),
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 20),
+        const Text(
+          'Search Result',
+          style: Styles.textStyle18,
+        ),
+        const SizedBox(height: 12),
+        Expanded(child: BlocBuilder<SearchCubit, SearchState>(
+          builder: (context, state) {
+            if (state is SearchSuccessState) {
+              return const SearchResultListView();
+            } else if (state is SearchFailureState) {
+              return CustomErrorWidget(errorMessege: state.errorMessege);
+            } else {
+              return const CustomLoadingIndicator();
+            }
+          },
+        ))
+      ],
     );
   }
 }

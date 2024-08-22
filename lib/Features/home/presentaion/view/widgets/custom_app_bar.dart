@@ -1,4 +1,4 @@
-import 'package:booly_app/Features/search/presentaion/views/search_view.dart';
+import 'package:booly_app/Features/search/presentaion/views/widgets/custome_search_delegate.dart';
 import 'package:booly_app/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

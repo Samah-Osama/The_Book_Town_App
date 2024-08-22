@@ -3,6 +3,9 @@ import 'package:booly_app/Features/home/presentaion/view/book_details_view.dart'
 import 'package:booly_app/Features/home/presentaion/view/home_view.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/general_books_cubit/generalbooks_cubit.dart';
 import 'package:booly_app/Features/home/presentaion/view_models/newest_book_cubit/newestbook_cubit.dart';
+import 'package:booly_app/Features/search/data/repos/search_repo.dart';
+import 'package:booly_app/Features/search/data/repos/search_repo_imple.dart';
+import 'package:booly_app/Features/search/presentaion/view_models/search_cubit/search_cubit.dart';
 import 'package:booly_app/Features/spalsh_feature/presentaion/views/splash_view.dart';
 import 'package:booly_app/constant.dart';
 
@@ -36,6 +39,10 @@ class TheBookTown extends StatelessWidget {
             getIt.get<HomeRepoImplementation>(),
           ),
         ),
+        BlocProvider(
+            create: (context) => SearchCubit(
+                  getIt.get<SearchRepoImplementaion>(),
+                )),
       ],
       child: MaterialApp(
         routes: {
