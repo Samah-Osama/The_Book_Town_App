@@ -5,10 +5,10 @@ import 'package:booly_app/core/utils/api_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-class SearchRepoImple implements SearchRepo {
+class SearchRepoImplementaion implements SearchRepo {
   final ApiService apiService;
 
-  SearchRepoImple({required this.apiService});
+  SearchRepoImplementaion({required this.apiService});
   @override
   Future<Either<Failure, List<BookModel>>> searchOnBook(
       {String query = 'book'}) async {
